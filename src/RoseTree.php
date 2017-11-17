@@ -54,6 +54,15 @@ class RoseTree{
             return $niddle;
         }
     }
+    
+    public function getKidsByParentId( $parentId ){
+        $element = $this->getNodeById($parentId);
+        if($element){
+            return $element->children;
+        }else{
+            return [];
+        }
+    }
 
     public function reduce( $field = 'id', $accumulatorFieldName = 'id_sum'){
 

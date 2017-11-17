@@ -54,6 +54,29 @@ class RoseTest extends PHPUnit_Framework_TestCase {
 
     $this->assertEquals( $totalNodes,3 );
   }
+  
+  public function testGetNodeNoKids(){
+    $rose = new RoseTree();
+    $rose->addItem( new X(1,0) );
+    $rose->addItem( new X(2,1) );
+    $this->assertNotNull( $rose->getKidsByParentId(1) );
+  }
+  
+  public function testGetKids(){
+    $rose = new RoseTree();
+    $rose->addItem( new X(1,0) );
+    $rose->addItem( new X(2,1) );
+    $kids = $rose->getKidsByParentId(1);
+    $this->assertEquals( sizeof($kids),1 );
+  }
+  
+  public function testGetNoKids(){
+    $rose = new RoseTree();
+    $rose->addItem( new X(1,0) );
+    $rose->addItem( new X(2,1) );
+    $kids = $rose->getKidsByParentId(2);
+    $this->assertEquals( sizeof($kids),0 );
+  }
 }
 
 
